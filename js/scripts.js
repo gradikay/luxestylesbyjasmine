@@ -476,3 +476,62 @@ function initializeBackToTop() {
         }, 500);
     });
 }
+
+// Blog functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Blog newsletter form
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('.newsletter-input');
+            const email = emailInput.value.trim();
+            
+            if (email && isValidEmail(email)) {
+                showNotification('Thank you for subscribing! You\'ll receive hair care tips soon.', 'success');
+                emailInput.value = '';
+            } else {
+                showNotification('Please enter a valid email address.', 'error');
+            }
+        });
+    }
+
+    // Email validation helper
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // Blog read more functionality
+    const readMoreBtns = document.querySelectorAll('.blog-read-more');
+    readMoreBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const blogCard = this.closest('.blog-card');
+            const title = blogCard.querySelector('.blog-title').textContent;
+            showNotification(`"${title}" - Full article coming soon!`, 'info');
+        });
+    });
+
+    // Add blog cards to scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    const blogCards = document.querySelectorAll('.blog-card');
+    blogCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'all 0.6s ease';
+        observer.observe(card);
+    });
+});
