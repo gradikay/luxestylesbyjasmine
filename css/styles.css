@@ -1642,7 +1642,11 @@ body {
     gap: 1rem;
 }
 
-/* Animations */
+/* ==============================================
+   ANIMATION KEYFRAMES
+   ============================================== */
+
+/* Slide in from left animation */
 @keyframes slideInLeft {
     from {
         opacity: 0;
@@ -1654,6 +1658,7 @@ body {
     }
 }
 
+/* Slide in from right animation */
 @keyframes slideInRight {
     from {
         opacity: 0;

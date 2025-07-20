@@ -223,8 +223,8 @@ document.addEventListener('DOMContentLoaded', function() {
         icon.style.animationDelay = `${index * 0.5}s`;
     });
 
-    // Hero images now managed directly in HTML for customer editing
-    // No JavaScript image switching - all images accessible in index.html
+    // Note: Hero images are managed directly in HTML for easy customer editing
+    // This approach allows non-programmers to change images by editing HTML only
     
     // Initialize business hours functionality
     initializeBusinessHours();
@@ -246,7 +246,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Typing effect for hero title (optional enhancement)
+    // Typing effect for hero title (currently unused - can be removed if not needed)
+    // Uncomment and use this function if you want animated text typing effects
+    /*
     function typeWriter(element, text, speed = 100) {
         let i = 0;
         element.innerHTML = '';
@@ -261,6 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         type();
     }
+    */
 
     // Add sparkle effect on hover for certain elements
     const sparkleElements = document.querySelectorAll('.service-icon, .social-link');
