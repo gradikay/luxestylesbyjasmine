@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://luxe-styles-by-jasmine.replit.app/sitemap.xml
+
+# Important pages for crawling
+Allow: /index.html
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+
+# Block any temporary or system files
+Disallow: /.replit
+Disallow: /pyproject.toml
+Disallow: /uv.lock
+Disallow: *.md
