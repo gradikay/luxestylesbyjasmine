@@ -1,0 +1,36 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF69B4;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF1493;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFB6C1;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="30" cy="30" r="28" fill="url(#logoGradient)" opacity="0.1" stroke="url(#logoGradient)" stroke-width="2"/>
+  
+  <!-- Stylized hair/crown design -->
+  <path d="M15 25 Q20 15 30 20 Q40 15 45 25 Q40 30 30 25 Q20 30 15 25 Z" fill="url(#logoGradient)" filter="url(#glow)"/>
+  
+  <!-- Hair strands -->
+  <path d="M25 20 Q30 10 35 20" stroke="url(#logoGradient)" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M22 22 Q27 12 32 22" stroke="url(#logoGradient)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M28 22 Q33 12 38 22" stroke="url(#logoGradient)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="20" cy="35" r="2" fill="url(#logoGradient)" opacity="0.7"/>
+  <circle cx="40" cy="35" r="2" fill="url(#logoGradient)" opacity="0.7"/>
+  <circle cx="30" cy="40" r="1.5" fill="url(#logoGradient)" opacity="0.8"/>
+  
+  <!-- Letters L and J stylized -->
+  <text x="18" y="45" font-family="Dancing Script, cursive" font-size="12" font-weight="bold" fill="url(#logoGradient)">L</text>
+  <text x="38" y="45" font-family="Dancing Script, cursive" font-size="12" font-weight="bold" fill="url(#logoGradient)">J</text>
+</svg>
