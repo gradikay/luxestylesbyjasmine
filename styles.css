@@ -1554,7 +1554,6 @@ body {
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
-    position: relative;
     overflow: hidden;
 }
 
