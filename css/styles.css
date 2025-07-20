@@ -1338,10 +1338,15 @@ body {
     color: var(--primary-pink);
 }
 
-/* Blog Section */
+/* ==============================================
+   BLOG SECTION STYLES
+   ============================================== */
+
+/* Main blog section container */
+/* TO CHANGE BACKGROUND: Modify the gradient colors below */
 .blog {
-    padding: 5rem 0;
-    background: linear-gradient(135deg, var(--dark-gray) 0%, #1a1a1a 100%);
+    padding: 5rem 0; /* Space above and below the blog section */
+    background: linear-gradient(135deg, var(--dark-gray) 0%, #1a1a1a 100%); /* Dark gradient background */
     position: relative;
 }
 
@@ -1359,21 +1364,25 @@ body {
     pointer-events: none;
 }
 
+/* Blog posts layout grid */
+/* This creates a responsive grid that adjusts to different screen sizes */
 .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    display: grid; /* Use CSS Grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive columns, minimum 350px wide */
+    gap: 2rem; /* Space between blog cards */
+    margin-bottom: 3rem; /* Space below the blog grid */
 }
 
+/* Individual blog post card styling */
+/* TO CHANGE CARD APPEARANCE: Modify background, border-radius, or box-shadow */
 .blog-card {
-    background: var(--black);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    position: relative;
-    border: 1px solid rgba(255, 105, 180, 0.1);
+    background: var(--black); /* Black background for each card */
+    border-radius: 20px; /* Rounded corners */
+    overflow: hidden; /* Hide content that goes outside rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Drop shadow effect */
+    transition: all 0.3s ease; /* Smooth animation for hover effects */
+    position: relative; /* Allows positioning of child elements */
+    border: 1px solid rgba(255, 105, 180, 0.1); /* Subtle pink border */
 }
 
 .blog-card:hover,
@@ -1384,16 +1393,18 @@ body {
     border-color: rgba(255, 105, 180, 0.3);
 }
 
-/* Mobile touch states */
+/* Mobile device touch interactions */
+/* This makes blog cards respond properly to finger taps on phones and tablets */
 @media (hover: none) {
     .blog-card {
-        transition: all 0.2s ease;
+        transition: all 0.2s ease; /* Faster transitions for mobile */
     }
     
+    /* When user taps a blog card on mobile */
     .blog-card:active {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(255, 105, 180, 0.2);
-        border-color: rgba(255, 105, 180, 0.3);
+        transform: translateY(-5px); /* Move card up slightly */
+        box-shadow: 0 15px 30px rgba(255, 105, 180, 0.2); /* Pink glow effect */
+        border-color: rgba(255, 105, 180, 0.3); /* Brighter pink border */
     }
 }
 
@@ -1504,14 +1515,16 @@ body {
     }
 }
 
+/* Newsletter subscription section */
+/* TO CHANGE NEWSLETTER COLORS: Modify the gradient colors below */
 .blog-newsletter {
-    background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
-    border-radius: 20px;
-    padding: 3rem 2rem;
-    text-align: center;
-    margin-top: 3rem;
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink)); /* Pink gradient background */
+    border-radius: 20px; /* Rounded corners */
+    padding: 3rem 2rem; /* Space inside the newsletter box */
+    text-align: center; /* Center all text */
+    margin-top: 3rem; /* Space above newsletter section */
+    position: relative; /* Allows positioning of animated elements */
+    overflow: hidden; /* Hide animated elements that go outside bounds */
 }
 
 .blog-newsletter::before {

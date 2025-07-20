@@ -477,89 +477,119 @@ function initializeBackToTop() {
     });
 }
 
-// Blog functionality
+/* ==============================================
+   BLOG SECTION JAVASCRIPT
+   ============================================== */
+
+// This code runs when the webpage finishes loading
+// It adds interactive features to the blog section
 document.addEventListener('DOMContentLoaded', function() {
-    // Blog newsletter form
+    
+    // Newsletter subscription form functionality
+    // This handles what happens when someone tries to subscribe to your newsletter
     const newsletterForm = document.querySelector('.newsletter-form');
+    // Check if newsletter form exists on the page
     if (newsletterForm) {
+        // Listen for when someone clicks the subscribe button
         newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const emailInput = this.querySelector('.newsletter-input');
-            const email = emailInput.value.trim();
+            e.preventDefault(); // Prevent the form from submitting normally
             
+            // Get the email input field and the email address they typed
+            const emailInput = this.querySelector('.newsletter-input');
+            const email = emailInput.value.trim(); // Remove extra spaces
+            
+            // Check if they entered a valid email address
             if (email && isValidEmail(email)) {
+                // Show success message and clear the input field
                 showNotification('Thank you for subscribing! You\'ll receive hair care tips soon.', 'success');
-                emailInput.value = '';
+                emailInput.value = ''; // Clear the email field
             } else {
+                // Show error message if email is invalid
                 showNotification('Please enter a valid email address.', 'error');
             }
         });
     }
 
-    // Email validation helper
+    // Helper function to check if an email address is valid
+    // TO CUSTOMIZE: You can modify this to accept different email formats
     function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Standard email pattern
+        return emailRegex.test(email); // Returns true if email is valid
     }
 
-    // Blog read more functionality
+    // "Read More" button functionality for blog posts
+    // This handles what happens when someone clicks "Read More" on a blog post
     const readMoreBtns = document.querySelectorAll('.blog-read-more');
     readMoreBtns.forEach(btn => {
         btn.addEventListener('click', function() {
+            // Find the blog post this button belongs to
             const blogCard = this.closest('.blog-card');
+            // Get the title of the blog post
             const title = blogCard.querySelector('.blog-title').textContent;
+            // Show a message indicating the full article is coming soon
+            // TO CUSTOMIZE: Replace this with actual blog post links when ready
             showNotification(`"${title}" - Full article coming soon!`, 'info');
         });
     });
 
-    // Add blog cards to scroll animations
+    // Animation system for blog cards
+    // This makes blog cards fade in as users scroll down the page
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.1, // Trigger when 10% of the element is visible
+        rootMargin: '0px 0px -50px 0px' // Start animation 50px before element enters view
     };
 
+    // Create an observer that watches for elements coming into view
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                // When a blog card becomes visible, fade it in
+                entry.target.style.opacity = '1'; // Make it visible
+                entry.target.style.transform = 'translateY(0)'; // Move it to normal position
             }
         });
     }, observerOptions);
 
+    // Set up animations and touch interactions for each blog card
     const blogCards = document.querySelectorAll('.blog-card');
     blogCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'all 0.6s ease';
-        observer.observe(card);
+        // Initially hide the cards (they'll fade in when scrolled into view)
+        card.style.opacity = '0'; // Start invisible
+        card.style.transform = 'translateY(30px)'; // Start slightly below normal position
+        card.style.transition = 'all 0.6s ease'; // Smooth animation
+        observer.observe(card); // Watch this card for scroll animations
         
-        // Add touch interactions for mobile
+        // Mobile touch interactions
+        // These make the cards respond properly to finger taps on phones/tablets
+        
+        // When user starts touching a card
         card.addEventListener('touchstart', function(e) {
-            this.classList.add('touch-active');
+            this.classList.add('touch-active'); // Add special mobile styling
         });
         
+        // When user stops touching a card
         card.addEventListener('touchend', function(e) {
             setTimeout(() => {
-                this.classList.remove('touch-active');
+                this.classList.remove('touch-active'); // Remove mobile styling after delay
             }, 200);
         });
         
+        // When touch is interrupted (like a phone call)
         card.addEventListener('touchcancel', function(e) {
-            this.classList.remove('touch-active');
+            this.classList.remove('touch-active'); // Clean up mobile styling
         });
         
-        // Add click handler for mobile
+        // Make entire blog cards clickable on mobile devices
         card.addEventListener('click', function(e) {
-            // If user clicked on "Read More" button, let it handle the click
+            // If user clicked directly on the "Read More" button, let it handle the click
             if (e.target.classList.contains('blog-read-more')) {
-                return;
+                return; // Don't interfere with the button's normal behavior
             }
             
-            // Otherwise, trigger the read more action
+            // Otherwise, if they clicked anywhere else on the card, act like they clicked "Read More"
             const readMoreBtn = this.querySelector('.blog-read-more');
             if (readMoreBtn) {
-                readMoreBtn.click();
+                readMoreBtn.click(); // Trigger the "Read More" button action
             }
         });
     });
