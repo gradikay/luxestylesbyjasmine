@@ -4,6 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     const navbar = document.getElementById('navbar');
+    
+    // Initialize business hours
+    initializeBusinessHours();
+    
+    // Initialize back to top button
+    initializeBackToTop();
 
     // Toggle mobile menu
     hamburger.addEventListener('click', function() {
@@ -404,3 +410,130 @@ const revealObserver = new IntersectionObserver(function(entries) {
 revealSections.forEach(section => {
     revealObserver.observe(section);
 });
+
+// Business Hours Functionality
+function initializeBusinessHours() {
+    updateBusinessStatus();
+    // Update status every minute
+    setInterval(updateBusinessStatus, 60000);
+}
+
+function updateBusinessStatus() {
+    const status = getBusinessStatus();
+    const statusDot = document.querySelector('.status-dot');
+    const statusMessage = document.getElementById('status-message');
+    const statusDetail = document.getElementById('status-detail');
+    const todayHoursElement = document.getElementById('today-hours');
+    const countdownTimer = document.getElementById('countdown-timer');
+    
+    if (!statusDot || !statusMessage || !statusDetail || !todayHoursElement) return;
+    
+    // Update status dot
+    statusDot.className = `status-dot ${status.status}`;
+    
+    // Update status text
+    statusMessage.textContent = status.message;
+    
+    if (status.timeUntilChange) {
+        if (status.status === 'open' || status.status === 'closing-soon') {
+            statusDetail.textContent = `Closes in ${status.timeUntilChange}`;
+        } else if (status.status === 'opening-soon') {
+            statusDetail.textContent = `Opens in ${status.timeUntilChange}`;
+        } else {
+            statusDetail.textContent = status.nextOpen ? `Next open: ${status.nextOpen}` : 'Check back soon';
+        }
+    } else {
+        statusDetail.textContent = status.nextOpen ? `Next open: ${status.nextOpen}` : 'Check back soon';
+    }
+    
+    // Update today's hours
+    todayHoursElement.textContent = getTodayHours();
+    
+    // Update countdown timer for closing soon
+    if (status.status === 'open' || status.status === 'closing-soon') {
+        showCountdownTimer(status.timeUntilChange);
+        countdownTimer.style.display = 'block';
+    } else {
+        countdownTimer.style.display = 'none';
+    }
+    
+    // Update weekly hours with today highlight
+    updateWeeklyHours();
+}
+
+function showCountdownTimer(timeUntilChange) {
+    const hoursLeft = document.getElementById('hours-left');
+    const minutesLeft = document.getElementById('minutes-left');
+    
+    if (!hoursLeft || !minutesLeft || !timeUntilChange) return;
+    
+    const [hours, minutes] = timeUntilChange.split(':').map(Number);
+    hoursLeft.textContent = hours.toString().padStart(2, '0');
+    minutesLeft.textContent = minutes.toString().padStart(2, '0');
+}
+
+function updateWeeklyHours() {
+    const now = new Date();
+    const currentDay = now.toLocaleDateString('en-US', { weekday: 'lowercase' });
+    const hourItems = document.querySelectorAll('.hour-item');
+    
+    // Convert business hours to display format
+    const daysOrder = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+    
+    hourItems.forEach((item, index) => {
+        const dayName = daysOrder[index];
+        const dayHours = businessHours[dayName];
+        const hoursSpan = item.querySelector('.hours');
+        
+        if (dayHours.isOpen) {
+            const openTime = convertTo12Hour(dayHours.open);
+            const closeTime = convertTo12Hour(dayHours.close);
+            hoursSpan.textContent = `${openTime} - ${closeTime}`;
+        } else {
+            hoursSpan.textContent = 'Closed';
+        }
+        
+        // Highlight today
+        if (dayName === currentDay) {
+            item.classList.add('today');
+        } else {
+            item.classList.remove('today');
+        }
+    });
+}
+
+// Back to Top Button Functionality
+function initializeBackToTop() {
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    if (!backToTopButton) return;
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+    
+    // Scroll to top when clicked
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        
+        // Add extra sparkle animation on click
+        const sparkles = this.querySelectorAll('.sparkle');
+        sparkles.forEach(sparkle => {
+            sparkle.style.animation = 'sparkleAnimation 0.5s ease-in-out';
+        });
+        
+        setTimeout(() => {
+            sparkles.forEach(sparkle => {
+                sparkle.style.animation = '';
+            });
+        }, 500);
+    });
+}
