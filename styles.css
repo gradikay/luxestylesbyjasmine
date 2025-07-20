@@ -164,16 +164,18 @@ body {
 }
 
 .hero-content {
-    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
-    padding-top: 80px;
 }
 
 .hero-text {
     animation: slideInLeft 1s ease-out;
+    max-width: 600px;
 }
 
 .hero-title {
@@ -897,7 +899,12 @@ body {
         grid-template-columns: 1fr;
         gap: 2rem;
         text-align: center;
-        padding-top: 100px;
+        padding: 100px 20px 0;
+    }
+    
+    .hero-text {
+        margin: 0 auto;
+        max-width: 100%;
     }
     
     .hero-main {
@@ -912,6 +919,8 @@ body {
     .hero-description {
         font-size: 1.1rem;
         margin-bottom: 2rem;
+        max-width: 100%;
+        line-height: 1.6;
     }
     
     .hero-buttons {
