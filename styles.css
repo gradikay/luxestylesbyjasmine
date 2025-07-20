@@ -448,41 +448,6 @@ body {
 .services {
     padding: 6rem 0;
     background: var(--dark-gray);
-    position: relative;
-    overflow: hidden;
-}
-
-.services::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle at 25% 25%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(255, 145, 199, 0.08) 0%, transparent 50%);
-    z-index: 1;
-    pointer-events: none;
-}
-
-.services::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 C300,10 600,90 900,50 C1000,30 1100,70 1200,50 L1200,0 L0,0 Z" fill="%23ff69b4" fill-opacity="0.08"/></svg>'),
-        url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,80 C300,120 600,40 900,80 C1000,100 1100,60 1200,80 L1200,120 L0,120 Z" fill="%23ff91c7" fill-opacity="0.05"/></svg>'),
-        url('data:image/svg+xml;utf8,<svg viewBox="0 0 800 60" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C200,5 400,55 600,30 C700,20 750,40 800,30 L800,60 L0,60 Z" fill="%23ffb6d9" fill-opacity="0.03"/></svg>');
-    background-position: 0 0, 0 40px, 0 80px;
-    background-size: 1200px 120px, 1200px 120px, 800px 60px;
-    background-repeat: repeat-x;
-    animation: waveFloat 15s ease-in-out infinite, waveFloat2 20s ease-in-out infinite reverse, waveFloat3 12s ease-in-out infinite;
-    z-index: 1;
-    pointer-events: none;
 }
 
 .section-header {
@@ -527,14 +492,35 @@ body {
     content: '';
     position: absolute;
     top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url('data:image/svg+xml;utf8,<svg viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,40 C100,20 200,60 300,40 C350,30 375,50 400,40 L400,100 L0,100 Z" fill="%23ff69b4" fill-opacity="0.06"/></svg>'),
+        url('data:image/svg+xml;utf8,<svg viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 C100,70 200,30 300,50 C350,40 375,60 400,50 L400,0 L0,0 Z" fill="%23ff91c7" fill-opacity="0.04"/></svg>'),
+        radial-gradient(circle at 20% 80%, rgba(255, 105, 180, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 145, 199, 0.05) 0%, transparent 50%);
+    background-position: 0 bottom, 0 top, 0 0, 0 0;
+    background-size: 400px 100px, 400px 80px, 100% 100%, 100% 100%;
+    background-repeat: repeat-x, repeat-x, no-repeat, no-repeat;
+    animation: cardWaveFloat 18s ease-in-out infinite, cardWaveFloat2 22s ease-in-out infinite reverse;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.1), transparent);
-    transition: left 0.5s ease;
+    background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.15), transparent);
+    transition: left 0.6s ease;
+    z-index: 2;
 }
 
-.service-card:hover::before {
+.service-card:hover::after {
     left: 100%;
 }
 
@@ -555,18 +541,25 @@ body {
     margin: 0 auto 1.5rem;
     font-size: 2rem;
     color: white;
+    position: relative;
+    z-index: 3;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
 }
 
 .service-title {
     font-size: 1.8rem;
     color: var(--primary-pink);
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 3;
 }
 
 .service-description {
     color: #cccccc;
     margin-bottom: 1.5rem;
     line-height: 1.6;
+    position: relative;
+    z-index: 3;
 }
 
 .service-price {
@@ -574,6 +567,8 @@ body {
     font-weight: 600;
     color: var(--light-pink);
     margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 3;
 }
 
 /* Gallery Section */
@@ -1079,6 +1074,37 @@ body {
     }
     66% {
         transform: translateY(3px) scale(0.98);
+    }
+}
+
+@keyframes cardWaveFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.7;
+    }
+    25% {
+        transform: translateY(-3px) rotate(0.2deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-1px) rotate(0.5deg);
+        opacity: 0.9;
+    }
+    75% {
+        transform: translateY(-4px) rotate(0.3deg);
+        opacity: 0.6;
+    }
+}
+
+@keyframes cardWaveFloat2 {
+    0%, 100% {
+        transform: translateX(0px) scale(1);
+    }
+    33% {
+        transform: translateX(-2px) scale(1.01);
+    }
+    66% {
+        transform: translateX(1px) scale(0.99);
     }
 }
 
