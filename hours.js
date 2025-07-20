@@ -65,7 +65,7 @@ const specialClosedDates = [
 const closingWarningMinutes = 30;
 
 // Time to show "opening soon" (minutes before opening)
-const openingSoonMinutes = 15;
+const openingSoonMinutes = 60;
 
 // Helper function to convert 12-hour time to 24-hour format
 function convertTo24Hour(time12h) {
