@@ -228,7 +228,10 @@ body {
     height: auto;
     border-radius: 20px;
     box-shadow: 0 20px 50px rgba(255, 105, 180, 0.3);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    transform-origin: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .hero-main-img:hover {

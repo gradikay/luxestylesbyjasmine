@@ -217,6 +217,51 @@ document.addEventListener('DOMContentLoaded', function() {
         icon.style.animationDelay = `${index * 0.5}s`;
     });
 
+    // Hero image switcher with cool transitions
+    function initializeHeroImageSwitcher() {
+        const heroImage = document.querySelector('.hero-main-img');
+        if (!heroImage) return;
+        
+        const images = [
+            'attached_assets/cute-hair-1_1752954432621_1752969817949.webp',
+            'attached_assets/hair-style-4-hero_1752954432624_1752969817952.webp'
+        ];
+        
+        let currentIndex = 0;
+        
+        function switchImage() {
+            // Add cool transition effects
+            heroImage.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            heroImage.style.opacity = '0';
+            heroImage.style.transform = 'scale(0.9) rotateY(15deg)';
+            heroImage.style.filter = 'blur(2px)';
+            
+            setTimeout(() => {
+                // Change image source
+                currentIndex = (currentIndex + 1) % images.length;
+                heroImage.src = images[currentIndex];
+                
+                // Add fade in effect with bounce
+                setTimeout(() => {
+                    heroImage.style.opacity = '1';
+                    heroImage.style.transform = 'scale(1.05) rotateY(0deg)';
+                    heroImage.style.filter = 'blur(0px)';
+                    
+                    // Settle back to normal size
+                    setTimeout(() => {
+                        heroImage.style.transform = 'scale(1) rotateY(0deg)';
+                    }, 200);
+                }, 50);
+            }, 400);
+        }
+        
+        // Switch image every 5 seconds
+        setInterval(switchImage, 5000);
+    }
+    
+    // Initialize image switcher
+    initializeHeroImageSwitcher();
+
     // Form label animations
     const formInputs = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
     formInputs.forEach(input => {
