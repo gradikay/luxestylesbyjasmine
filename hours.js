@@ -28,7 +28,7 @@ const openingSoonMinutes = 15;
 // Function to get current status
 function getBusinessStatus() {
     const now = new Date();
-    const currentDay = now.toLocaleDateString('en-US', { weekday: 'lowercase' });
+    const currentDay = now.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
     const currentTime = now.toTimeString().slice(0, 5); // HH:MM format
     const currentDate = now.toISOString().split('T')[0]; // YYYY-MM-DD format
     
@@ -140,7 +140,7 @@ function convertTo12Hour(time24) {
 
 function getTodayHours() {
     const now = new Date();
-    const currentDay = now.toLocaleDateString('en-US', { weekday: 'lowercase' });
+    const currentDay = now.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
     const todayHours = businessHours[currentDay];
     
     if (!todayHours.isOpen) return "Closed";

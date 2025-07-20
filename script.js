@@ -267,6 +267,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize image switcher
     initializeHeroImageSwitcher();
+    
+    // Initialize business hours functionality
+    initializeBusinessHours();
+    
+    // Initialize back to top button
+    initializeBackToTop();
 
     // Form label animations
     const formInputs = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
@@ -473,33 +479,8 @@ function showCountdownTimer(timeUntilChange) {
 }
 
 function updateWeeklyHours() {
-    const now = new Date();
-    const currentDay = now.toLocaleDateString('en-US', { weekday: 'lowercase' });
-    const hourItems = document.querySelectorAll('.hour-item');
-    
-    // Convert business hours to display format
-    const daysOrder = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-    
-    hourItems.forEach((item, index) => {
-        const dayName = daysOrder[index];
-        const dayHours = businessHours[dayName];
-        const hoursSpan = item.querySelector('.hours');
-        
-        if (dayHours.isOpen) {
-            const openTime = convertTo12Hour(dayHours.open);
-            const closeTime = convertTo12Hour(dayHours.close);
-            hoursSpan.textContent = `${openTime} - ${closeTime}`;
-        } else {
-            hoursSpan.textContent = 'Closed';
-        }
-        
-        // Highlight today
-        if (dayName === currentDay) {
-            item.classList.add('today');
-        } else {
-            item.classList.remove('today');
-        }
-    });
+    // Weekly hours section has been removed to make the layout more compact
+    // This function is kept for backwards compatibility but does nothing
 }
 
 // Back to Top Button Functionality
