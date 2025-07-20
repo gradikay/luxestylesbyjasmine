@@ -297,23 +297,97 @@ body {
     background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
     color: white;
     box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff69b4, #ff91c7, #ffb6d9, #ff69b4, #e55a9f, #ff91c7);
+    background-size: 400% 400%;
+    border-radius: inherit;
+    z-index: -1;
+    animation: gradientShift 3s ease infinite;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s;
+}
+
+.btn-primary:hover::after {
+    left: 100%;
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.05);
     box-shadow: 0 15px 40px rgba(255, 105, 180, 0.6);
+    animation: pulseGlow 1.5s ease infinite;
 }
 
 .btn-secondary {
     background: transparent;
     color: var(--primary-pink);
     border: 2px solid var(--primary-pink);
+    position: relative;
+    overflow: hidden;
+    background-clip: padding-box;
+}
+
+.btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff69b4, #ff91c7, #ffb6d9, #ff69b4, #e55a9f, #ff91c7);
+    background-size: 400% 400%;
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    animation: gradientShift 3s ease infinite;
+    transition: opacity 0.3s ease;
+}
+
+.btn-secondary:hover::before {
+    opacity: 1;
+}
+
+.btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 182, 217, 0.3), transparent);
+    transition: left 0.6s;
+    z-index: 0;
+}
+
+.btn-secondary:hover::after {
+    left: 100%;
 }
 
 .btn-secondary:hover {
-    background: var(--primary-pink);
+    background: linear-gradient(135deg, var(--primary-pink), var(--plush-pink));
     color: white;
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
 }
 
 .btn-outline {
@@ -322,12 +396,52 @@ body {
     border: 2px solid var(--primary-pink);
     padding: 10px 25px;
     font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+    background-clip: padding-box;
+}
+
+.btn-outline::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff69b4, #ff91c7, #ffb6d9, #ff69b4, #e55a9f, #ff91c7);
+    background-size: 400% 400%;
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    animation: gradientShift 2.5s ease infinite;
+    transition: opacity 0.3s ease;
+}
+
+.btn-outline:hover::before {
+    opacity: 1;
+}
+
+.btn-outline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+    z-index: 0;
+}
+
+.btn-outline:hover::after {
+    left: 100%;
 }
 
 .btn-outline:hover {
-    background: var(--primary-pink);
+    background: linear-gradient(135deg, var(--primary-pink), var(--plush-pink));
     color: white;
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
 }
 
 /* Services Section */
@@ -865,6 +979,27 @@ body {
     50% {
         transform: scale(1.1);
         opacity: 0.8;
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 15px 40px rgba(255, 105, 180, 0.6), 0 0 20px rgba(255, 105, 180, 0.4);
+    }
+    50% {
+        box-shadow: 0 20px 50px rgba(255, 105, 180, 0.8), 0 0 30px rgba(255, 105, 180, 0.6);
     }
 }
 
