@@ -1692,6 +1692,14 @@ body {
         gap: 1.5rem;
     }
     
+    .footer-logo .logo-text {
+        font-size: 2.5rem;
+    }
+    
+    .footer-logo .logo-by {
+        font-size: 1.2rem;
+    }
+    
     .section-title {
         font-size: 2.5rem;
     }
@@ -1766,6 +1774,14 @@ body {
     
     .filter-btn {
         padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    .footer-logo .logo-text {
+        font-size: 2rem;
+    }
+    
+    .footer-logo .logo-by {
         font-size: 1rem;
     }
 }
