@@ -84,9 +84,15 @@ Preferred communication style: Simple, everyday language.
 ## Development Notes
 
 ### Current Implementation Status
-- **Complete**: Navigation system, hero section, basic responsive layout
-- **In Progress**: Gallery filtering functionality
+- **Complete**: Navigation system, hero section, basic responsive layout, customer-friendly image management
+- **In Progress**: Gallery filtering functionality  
 - **Planned**: Services section, about section, contact section, testimonials
+
+### Recent Changes (July 20, 2025)
+- **Image Management**: Removed JavaScript image switching to ensure all images are controlled directly in HTML files for customer editability
+- **Business Hours**: Restructured hours.js with clear day-by-day format using AM/PM times for non-technical editing
+- **Mobile Optimization**: Fixed footer logo text sizing for all mobile devices (tablets and phones)
+- **Customer Accessibility**: Ensured no images are loaded from CSS/JS files - all customer content is in easily editable HTML
 
 ### Code Organization
 - **Modular CSS**: Organized with logical sections and CSS variables
