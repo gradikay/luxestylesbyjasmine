@@ -961,6 +961,36 @@ body {
 .about {
     padding: 6rem 0;
     background: var(--dark-gray);
+    position: relative;
+    overflow: hidden;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        /* Grid pattern */
+        linear-gradient(rgba(255, 105, 180, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 105, 180, 0.025) 1px, transparent 1px),
+        /* Diagonal lines */
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 20px,
+            rgba(255, 20, 147, 0.015) 20px,
+            rgba(255, 20, 147, 0.015) 21px
+        ),
+        /* Heart-shaped dots */
+        radial-gradient(circle at 30px 30px, rgba(255, 182, 193, 0.02) 2px, transparent 2px),
+        radial-gradient(circle at 90px 90px, rgba(255, 105, 180, 0.015) 1px, transparent 1px);
+    background-size: 25px 25px, 25px 25px, 60px 60px, 120px 120px, 150px 150px;
+    background-position: 0 0, 0 0, 30px 30px, 0 0, 50px 50px;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .about-content {
@@ -968,6 +998,8 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .about-img-container {
@@ -1082,6 +1114,36 @@ body {
     color: var(--primary-pink);
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
+}
+
+.stars i {
+    display: inline-block;
+    animation: starTwinkle 3s ease-in-out infinite;
+}
+
+.stars i:nth-child(1) { animation-delay: 0s; }
+.stars i:nth-child(2) { animation-delay: 0.6s; }
+.stars i:nth-child(3) { animation-delay: 1.2s; }
+.stars i:nth-child(4) { animation-delay: 1.8s; }
+.stars i:nth-child(5) { animation-delay: 2.4s; }
+
+@keyframes starTwinkle {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    25% {
+        transform: scale(1.2) rotate(15deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1) rotate(-10deg);
+        opacity: 0.9;
+    }
+    75% {
+        transform: scale(1.15) rotate(20deg);
+        opacity: 0.7;
+    }
 }
 
 .testimonial-text {
