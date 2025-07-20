@@ -533,5 +533,34 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.transform = 'translateY(30px)';
         card.style.transition = 'all 0.6s ease';
         observer.observe(card);
+        
+        // Add touch interactions for mobile
+        card.addEventListener('touchstart', function(e) {
+            this.classList.add('touch-active');
+        });
+        
+        card.addEventListener('touchend', function(e) {
+            setTimeout(() => {
+                this.classList.remove('touch-active');
+            }, 200);
+        });
+        
+        card.addEventListener('touchcancel', function(e) {
+            this.classList.remove('touch-active');
+        });
+        
+        // Add click handler for mobile
+        card.addEventListener('click', function(e) {
+            // If user clicked on "Read More" button, let it handle the click
+            if (e.target.classList.contains('blog-read-more')) {
+                return;
+            }
+            
+            // Otherwise, trigger the read more action
+            const readMoreBtn = this.querySelector('.blog-read-more');
+            if (readMoreBtn) {
+                readMoreBtn.click();
+            }
+        });
     });
 });
