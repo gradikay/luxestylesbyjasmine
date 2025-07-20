@@ -6,23 +6,23 @@
 - Open `index.html` 
 - Find the line with `<img class="hero-main-img"`
 - Change the `src="..."` to your new image path
-- Example: `src="attached_assets/my-new-hero-image.jpg"`
+- Example: `src="assets/my-new-hero-image.jpg"`
 
 ### Gallery Images
 - All gallery images are in the HTML file under the "Gallery" section
-- Each image has this format: `<img src="attached_assets/your-image.jpg" alt="Description">`
+- Each image has this format: `<img src="assets/your-image.jpg" alt="Description">`
 - Simply change the `src="..."` to your new image path
 - Change the `alt="..."` to describe your image
 
 ### Adding New Images
-1. Upload your images to the `attached_assets` folder
-2. Use the image name in the `src` attribute
+1. Upload your images to the `assets` folder
+2. Use the image name in the `src` attribute like: `assets/your-image.jpg`
 3. Always use web-friendly formats: `.jpg`, `.png`, or `.webp`
 
 ## How to Update Business Hours
 
 ### Easy Hours Editing
-- Open the `hours.js` file
+- Open the `js` folder, then open the `hours.js` file
 - You'll see clear sections for each day of the week
 - Change the times using AM/PM format (like "9:00 AM" or "6:00 PM")
 
@@ -46,14 +46,14 @@ Change `isOpen: true` to `isOpen: false`
 ## Important Files (Don't Touch)
 
 ### Never Edit These Files:
-- `styles.css` - Controls the design and colors
-- `script.js` - Controls website functionality  
+- `css/styles.css` - Controls the design and colors
+- `js/scripts.js` - Controls website functionality  
 - Logo files and design elements
 
 ### Safe to Edit:
 - `index.html` - All your content and images
-- `hours.js` - Business hours and special dates
-- Images in `attached_assets` folder
+- `js/hours.js` - Business hours and special dates
+- Images in `assets` folder
 
 ## Getting Help
 

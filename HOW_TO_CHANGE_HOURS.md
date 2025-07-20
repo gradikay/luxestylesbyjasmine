@@ -7,6 +7,7 @@ Your business hours are stored in a file called `hours.js`. This file is designe
 ## Step-by-Step Instructions
 
 ### 1. Open the Hours File
+- Open the `js` folder
 - Look for the file named `hours.js`
 - Click on it to open it
 

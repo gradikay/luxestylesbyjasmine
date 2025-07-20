@@ -89,12 +89,16 @@ Preferred communication style: Simple, everyday language.
 - **Planned**: Services section, about section, contact section, testimonials
 
 ### Recent Changes (July 20, 2025)
+- **Folder Structure**: Reorganized project with standard web development structure: css/, js/, assets/ directories
 - **Image Management**: Removed JavaScript image switching to ensure all images are controlled directly in HTML files for customer editability
 - **Business Hours**: Restructured hours.js with clear day-by-day format using AM/PM times for non-technical editing
 - **Mobile Optimization**: Fixed footer logo text sizing for all mobile devices (tablets and phones)
 - **Customer Accessibility**: Ensured no images are loaded from CSS/JS files - all customer content is in easily editable HTML
+- **File Organization**: Moved styles.css to css/, scripts.js to js/, and all images to assets/ for professional structure
 
 ### Code Organization
-- **Modular CSS**: Organized with logical sections and CSS variables
-- **Semantic HTML**: Proper HTML5 semantic elements
-- **Progressive JavaScript**: Feature detection and graceful degradation
+- **Professional Structure**: Standard web development folder organization (css/, js/, assets/)
+- **Modular CSS**: Organized with logical sections and CSS variables in css/styles.css
+- **Semantic HTML**: Proper HTML5 semantic elements in index.html
+- **Progressive JavaScript**: Feature detection and graceful degradation in js/scripts.js and js/hours.js
+- **Asset Management**: All images, fonts, and media files organized in assets/ directory
