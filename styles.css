@@ -1472,13 +1472,13 @@ body {
     }
     
     .hero-main {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
         line-height: 1.1;
         margin-bottom: 0.5rem;
     }
     
     .hero-sub {
-        font-size: 1.5rem;
+        font-size: 2rem;
         margin-left: 0;
         margin-bottom: 1rem;
     }
@@ -1550,12 +1550,12 @@ body {
     }
     
     .hero-main {
-        font-size: 2rem;
+        font-size: 2.8rem;
         line-height: 1.1;
     }
     
     .hero-sub {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
         margin-bottom: 0.8rem;
     }
     
